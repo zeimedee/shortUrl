@@ -33,10 +33,3 @@ func ShortenUrl(c *fiber.Ctx) error {
 	database.DB.Db.Create(&entry)
 	return c.Status(200).JSON(shortUrl.Url)
 }
-
-func AllBooks(c *fiber.Ctx) error {
-	books := []models.Urls{}
-	database.DB.Db.Find(&books)
-
-	return c.Status(200).JSON(books)
-}

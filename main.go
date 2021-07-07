@@ -11,7 +11,6 @@ import (
 
 func Handler(app *fiber.App) {
 	app.Get("/short/:short", handlers.Redirect)
-	app.Get("/all", handlers.AllBooks)
 	app.Post("/shortUrl", handlers.ShortenUrl)
 
 }
