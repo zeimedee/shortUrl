@@ -10,7 +10,7 @@ import (
 )
 
 func Handler(app *fiber.App) {
-	app.Get("/short/:short", handlers.Redirect)
+	app.Get("/:short?", handlers.Redirect)
 	app.Post("/shortUrl", handlers.ShortenUrl)
 
 }

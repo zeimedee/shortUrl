@@ -9,11 +9,13 @@ import (
 
 func Redirect(c *fiber.Ctx) error {
 	link := new(models.Urls)
-	short := c.Params("short")
-	// database.DB.Db.Where("shorturl = ?", short).Find(&link)
-	database.DB.Db.Raw("SELECT * FROM urls WHERE short_url = ?", short).Scan(&link)
-	return c.Redirect(link.InitialUrl)
-
+	if c.Params("short") != "" {
+		short := c.Params("short")
+		// database.DB.Db.Where("shorturl = ?", short).Find(&link)
+		database.DB.Db.Raw("SELECT * FROM urls WHERE short_url = ?", short).Scan(&link)
+		return c.Redirect(link.InitialUrl)
+	}
+	return c.Status(400).JSON("Invalid URL")
 }
 
 func ShortenUrl(c *fiber.Ctx) error {
