@@ -1,4 +1,4 @@
-#URL Shortener
+# URL Shortener
 url shortener built in golang using gofiber and postgresSql
 
 the app can be started with 
